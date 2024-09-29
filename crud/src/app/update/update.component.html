@@ -1,0 +1,35 @@
+<div class="container mb-5" id="principal">
+    <h1 class="text-center mt-5 mb-5">ACTUALIZAR REGISTROS</h1>
+    <div class="container" id="tabla">
+        <table class="table table-hover table-bordered table-sm text-center">
+            <thead>
+                <tr>
+                    <th>TIPO ID</th>
+                    <th>NÚMERO ID</th>
+                    <th>NOMBRES</th>
+                    <th>APELLIDOS</th>
+                    <th>DIRECCIÓN</th>
+                    <th>TELÉFONO</th>
+                    <th>PROFESIÓN</th>
+                    <th>ACCIÓN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let persona of personas, let indice = index">
+                    <td>{{persona.tipo_id}}</td>
+                    <td>{{persona.numero_id}}</td>
+                    <td>{{persona.nombres}}</td>
+                    <td>{{persona.apellidos}}</td>
+                    <td>{{persona.direccion}}</td>
+                    <td>{{persona.telefono}}</td>
+                    <td>{{persona.profesion}}</td>
+                    <td><button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#mod_modificar" (click)="actualizarRegistro(persona)">MODIFICAR</button></td>
+                </tr>	
+            </tbody>
+        </table>	
+    </div>
+</div>
+<ng-container *ngIf="personaSeleccionada">
+    <app-modals [personaSeleccionada]="personaSeleccionada" [modificar]="modificar"></app-modals>
+</ng-container>
+

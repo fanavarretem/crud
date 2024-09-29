@@ -1,0 +1,49 @@
+<div class="container mb-5">
+    <h1 class="text-center mt-5 mb-5">CREAR REGISTRO</h1>
+
+        <div class="row">
+            <div class="form-group required col">
+                <label for="tipoId" class="control-label">Tipo de identificación</label>
+                <select class="custom-select form-control" id="tipoId" name="tipoId" required="true" [(ngModel)]="txtTipoId">
+                    <option disabled selected>-- SELECCIONE --</option>
+                    <option *ngFor="let tipoId of tiposId" value="{{tipoId.id_tipo_ident}}">{{tipoId.tipo_ident}}</option>
+                </select>
+            </div>
+            <div class="form-group required col">
+                <label for="numeroId" class="control-label">Número de identificación</label>
+                <input type="number" class="form-control" id="numeroId" name="numeroId" required="true" [(ngModel)]="txtNumId" >
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group required col">
+                <label for="nombres" class="control-label">Nombres</label>
+                <input type="text" class="form-control text-uppercase" id="nombres" name="nombres" required="true" [(ngModel)]="txtNombres" >
+            </div>
+            <div class="form-group required col">
+                <label for="apellidos" class="control-label">Apellidos</label>
+                <input type="text" class="form-control text-uppercase" id="apellidos" name="apellidos" required="true" [(ngModel)]="txtApellidos" >
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group required col">
+                <label for="direccion" class="control-label">Dirección</label>
+                <input type="text" class="form-control text-uppercase" id="direccion" name="direccion" required="true" [(ngModel)]="txtDireccion" >
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label for="telefono">Teléfono</label>
+                <input type="number" class="form-control" id="telefono" name="telefono" maxlength="10" [(ngModel)]="txtTelefono" >
+            </div>
+            <div class="form-group required col">
+                <label for="profesion" class="control-label">Profesión</label>
+                <select class="custom-select form-control" id="profesion" name="profesion" required="true" [(ngModel)]="txtProfesion">
+                    <option disabled selected>-- SELECCIONE --</option>
+                    <option *ngFor="let profesion of profesiones" value="{{profesion.id_profesion}}">{{profesion.nombre_profesion}}</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn btn-success mt-3" id="btnEnviar" (click)="crearRegistro()">Registrar</button>
+</div>
+<app-modals></app-modals>

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+/*--OCULTA SPINNER DE CAMPO TIPO NUMBER--*/
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+/*--ETIQUETA CAMPOS REQUERIDOS--*/
+.required .control-label:after {
+    content:"*";color:red;
+}

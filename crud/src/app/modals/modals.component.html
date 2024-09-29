@@ -1,0 +1,116 @@
+<ng-container *ngIf="modificar">
+
+  <!-- Modal MODIFICAR DATOS -->
+  <div id="mod_modificar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">MODIFICAR DATOS</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="submit" class="form-group">
+              <div class="col-md-12">
+                  <input type="hidden" name="txtmodid" id="txtmodid" class="form-control" required="true" [(ngModel)]="personaSeleccionada.numero_id">
+              </div>
+              <div class="col-md-12 required">
+                  <label for="txtmodnom" class="control-label">NOMBRES</label>
+                  <input type="text" maxlength="20" name="txtmodnom" id="txtmodnom" class="form-control" required="true" [(ngModel)]="personaSeleccionada.nombres">
+              </div>
+              <div class="col-md-12 required">
+                  <label for="txtmodape" class="control-label">APELLIDOS</label>
+                  <input type="text" maxlength="20" name="txtmodape" id="txtmodape" class="form-control" required="true" [(ngModel)]="personaSeleccionada.apellidos">
+              </div>
+              <div class="col-md-12 required">
+                  <label for="txtmoddir" class="control-label">DIRECCIÓN</label>
+                  <input type="text" maxlength="50" name="txtmoddir" id="txtmoddir" class="form-control" required="true" [(ngModel)]="personaSeleccionada.direccion">
+              </div>
+              <div class="col-md-12">
+                  <label for="txtmodtel">TELÉFONO</label>
+                  <input type="number" maxlength="10" name="txtmodtel" id="txtmodtel" class="form-control" required="true" [(ngModel)]="personaSeleccionada.telefono">
+              </div>
+              <div class="col-md-12 required">
+                  <label for="selmodprof" class="control-label">PROFESIÓN</label>
+                  <select name="selmodprof" id="selmodprof" class="form-control" [(ngModel)]="personaSeleccionada.id_profesion_fk">
+              <option disabled selected>-- SELECCIONE --</option>
+              <option *ngFor="let profesion of profesiones" value="{{profesion.id_profesion}}">{{profesion.nombre_profesion}}</option>
+                  </select>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="actualizar_registro()">GUARDAR CAMBIOS</button>
+            <button type="button" class="btn btn-success" (click)="closeModal('#mod_modificar')" >CANCELAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="eliminar">
+  <!-- Modal ELIMINAR DATOS-->
+  <div id="mod_eliminar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">ELIMINAR DATOS</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           <p>¿REALMENTE DESEA ELIMINAR LOS DATOS?</p>
+          <div id="delete_data">
+            IDENTIFICACIÓN: {{personaSeleccionada.numero_id}}<br>            
+            NOMBRES: {{personaSeleccionada.nombres}}<br>
+            APELLIDOS: {{personaSeleccionada.apellidos}}<br>
+            DIRECCIÓN: {{personaSeleccionada.direccion}}<br>
+            TELÉFONO: {{personaSeleccionada.telefono}}<br>
+            PROFESIÓN: {{personaSeleccionada.profesion}} 
+          </div>
+        </div>
+        <div class="modal-footer" id="eliminarElemento">
+          <button type='button' class='btn btn-danger' (click)="eliminar_registro()">ELIMINAR DATOS</button>
+		      <button type='button' class='btn btn-success' (click)="closeModal('#mod_eliminar')">CANCELAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+  
+  <!-- Modal CONFIRMACIÓN ELIMINADO-->
+  <div id="eliminado" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">OPERACION EXITOSA</h4>
+        </div>
+        <div class="modal-body">
+          <p>DATOS ELIMINADOS EXITOSAMENTE</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="location.reload()">ACEPTAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal INSERTAR -->
+  <div id="mod_generic" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">        
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div id="texto"></div>
+        <div class="modal-footer">
+          <button type="button" id="btnAceptar" class="btn btn-success" (click)="closeModal('#mod_generic')">ACEPTAR</button>
+        </div>
+      </div>
+    </div>
+  </div>

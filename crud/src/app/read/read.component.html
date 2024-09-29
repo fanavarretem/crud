@@ -1,0 +1,29 @@
+<div class="container mb-5" id="principal">
+    <h1 class="text-center mt-5 mb-5">LISTADO DE REGISTROS</h1>
+    <div class="container" id="tabla">
+        <table class="table table-hover table-bordered table-sm text-center">
+            <thead>
+                <tr>
+                    <th>TIPO ID</th>
+                    <th>NÚMERO ID</th>
+                    <th>NOMBRES</th>
+                    <th>APELLIDOS</th>
+                    <th>DIRECCIÓN</th>
+                    <th>TELÉFONO</th>
+                    <th>PROFESIÓN</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="true">
+                <tr *ngFor="let persona of personas">
+                    <td>{{persona.tipo_id}}</td>
+                    <td>{{persona.numero_id}}</td>
+                    <td>{{persona.nombres}}</td>
+                    <td>{{persona.apellidos}}</td>
+                    <td>{{persona.direccion}}</td>
+                    <td>{{persona.telefono}}</td>
+                    <td>{{persona.profesion}}</td>
+                </tr>
+            </tbody>
+        </table>	
+    </div>
+</div>
